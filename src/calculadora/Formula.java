@@ -1,7 +1,27 @@
 package calculadora;
 
-public class formulas {
+public class Formula {
 
+    public Formula() {
+    }
+	
+    static double ejecutar(double num1,double num2,String operando)
+	{
+		switch (operando)
+		{
+		case "+":
+			return suma(num1, num2);
+		case "-":
+			return resta(num1, num2);
+		case "*":
+			return multiplicacion(num1, num2);
+		case "/":
+			return division(num1, num2);
+			default:
+				return 0;
+		}
+	 	
+	}
 	static double suma(double num1,double num2)
 	{
 	  return num1+num2;
@@ -15,7 +35,7 @@ public class formulas {
 	static double division(double num1,double num2)
 	{
 	  return num1/num2;
-		}
+	}
 	
 	static double multiplicacion(double num1,double num2)
 	{

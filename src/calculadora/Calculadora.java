@@ -2,10 +2,11 @@ package calculadora;
 
 import java.util.Scanner;
 
-class calculadora {
+class Calculadora {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+        //Formula objOperaciones = new Formula();
 		 System.out.println("Introduzca Operacion a realizar");
 	        String entradaTeclado = "";
 	        double resultado;
@@ -24,7 +25,7 @@ class calculadora {
 		String operando2 = "";
     	for (int i = 1; i <= cadena.length(); i++) {
 
-			if (formulas.esNumero(cadena.substring((i - 1), i))) {
+			if (Formula.esNumero(cadena.substring((i - 1), i))) {
 				armaNumero = armaNumero + cadena.substring((i - 1), i);
 				
 			} else {
@@ -34,39 +35,17 @@ class calculadora {
 					armaNumero = "";
 				} else if (operando2 == "") {
 					operando2 = armaNumero;
-					operando1 = String.valueOf(ejecutar(Double.parseDouble(operando1), Double.parseDouble(armaNumero),signoOperador));
+					operando1 = String.valueOf(Formula.ejecutar(Double.parseDouble(operando1), Double.parseDouble(armaNumero),signoOperador));
 				    signoOperador = cadena.substring((i - 1), i);
 					operando2 = "";
 					armaNumero="";
 				}
 			}
 		}
-		operando1 = String.valueOf(ejecutar(Double.parseDouble(operando1), Double.parseDouble(armaNumero),signoOperador));
+		operando1 = String.valueOf(Formula.ejecutar(Double.parseDouble(operando1), Double.parseDouble(armaNumero),signoOperador));
 		return Double.parseDouble(operando1);
 
 	}
-	
-	static double ejecutar(double num1,double num2,String operando)
-	{
-		switch (operando)
-		{
-		case "+":
-			return formulas.suma(num1, num2);
-			
-		case "-":
-			return formulas.resta(num1, num2);
-		case "*":
-			return formulas.multiplicacion(num1, num2);
-		case "/":
-			return formulas.division(num1, num2);
-			default:
-				return 0;
-		}
-		 
-	 
-		
-	}
-	
-   
+	  
 }
 
